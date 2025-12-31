@@ -11,12 +11,23 @@ interface ElevationRequest {
 export async function POST(request: NextRequest) {
   try {
     const body: ElevationRequest = await request.json();
-    const { north, south, east, west, resolution = 100 } = body;
+    const { north, south, east, west, resolution: rawResolution = 100 } = body;
+
+    // Validate and cap resolution to prevent DoS (limit to 500x500)
+    const resolution = Math.min(Math.max(10, rawResolution), 500);
 
     // Validate bounds
     if (north <= south || east <= west) {
       return NextResponse.json(
         { error: 'Invalid bounds: north must be > south, east must be > west' },
+        { status: 400 }
+      );
+    }
+
+    // Limit maximum area size to prevent excessive tile fetching (max 1 degree span)
+    if (north - south > 1.0 || east - west > 1.0) {
+      return NextResponse.json(
+        { error: 'Requested area is too large. Please select a smaller region (max 1 degree).' },
         { status: 400 }
       );
     }
