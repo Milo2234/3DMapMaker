@@ -1,6 +1,8 @@
 # TerrainTiles 🏔️
 
-**TerrainTiles** is a high-performance web application designed to bridge the gap between digital geographic data and physical 3D models. It allows users to select any area on Earth, visualize it in an interactive 3D viewer, and export it as 3D-printable STL files or SVG contour maps.
+**TerrainTiles** (3DMapMaker) is a high-performance web application designed to bridge the gap between digital geographic data and physical 3D models. It allows users to select any area on Earth, visualize it in an interactive 3D viewer, and export it as 3D-printable STL files or SVG contour maps.
+
+Suggested uses for Topography, Classrooms, DnD, Model Railroading etc.
 
 ![TerrainTiles Mockup](./terrain-tiles/public/mockup.png)
 
@@ -41,8 +43,8 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/3D-Map-Tiling.git
-   cd 3D-Map-Tiling/terrain-tiles
+   git clone https://github.com/Milo2234/3DMapMaker.git
+   cd 3DMapMaker/terrain-tiles
    ```
 
 2. Install dependencies:
